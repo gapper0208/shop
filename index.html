@@ -1,9 +1,160 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>shop</title>
-  </head>
-  <body>
-     shop online
-  </body>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>小星辰</title>
+	<style>
+		#out {
+			width: 800px;
+			margin: auto;
+		}
+
+		.question {
+			width:150px;
+			height:100px;
+			float:left;
+			margin:20px;
+		}
+
+		.v {
+			display: none;
+		}
+
+		.row {
+			margin-bottom:10px;	
+			height:20px;
+			width:100%;
+		}
+
+		.block {
+			float:left;
+			width:14%;
+			height:20px;
+			text-align: center;
+		}
+
+		.separate-line{
+			width:100%;
+			border-top: #000 solid 1px;
+		}
+
+	</style>
+</head>
+<body>
+
+	<script type="text/javascript">
+			window.onload = function(){
+				var out = document.getElementById("out");
+				var v = document.getElementById("vertical");
+				var signFlag = false;
+				for(i = 0; i < 28; i++) {
+					var question = document.createElement("div");
+					question.innerHTML = v.innerHTML;
+					out.appendChild(question);
+					document.body.appendChild(out);
+					var h_first_shi = question.children[0].children[0].children[1];
+					var h_first_ge = question.children[0].children[0].children[2];
+					var h_sign = question.children[0].children[0].children[3];
+					var h_second_shi = question.children[0].children[0].children[4];
+					var h_second_ge = question.children[0].children[0].children[5];
+					var eq = question.children[0].children[0].children[6];
+
+					var first_shi = question.children[0].children[1].children[3];
+					var first_ge = question.children[0].children[1].children[5];
+					var sign = question.children[0].children[2].children[1];
+					var second_shi = question.children[0].children[2].children[3];
+					var second_ge = question.children[0].children[2].children[5];
+
+					var signFlag = !signFlag;
+					sign.innerHTML = signFlag ? "+" : "-";
+
+					var a = parseInt(Math.random()*9)+1;
+					var b = parseInt(Math.random()*9);
+					var c = parseInt(Math.random()*9)+1;
+					var d = parseInt(Math.random()*9);
+
+
+					
+					if(signFlag) {
+						while(Math.abs(+(a+""+b) -　+(c+""+d)) < 20 || b+d < 10 || +(a+""+b) +　+(c+""+d) > 100 ) {
+							 a = parseInt(Math.random()*9)+1;
+							 b = parseInt(Math.random()*9);
+							 c = parseInt(Math.random()*9)+1;
+							 d = parseInt(Math.random()*9);
+						}					
+					}
+
+					if(!signFlag) {
+							while(+(a+""+b) <　+(c+""+d) || Math.abs(+(a+""+b) -　+(c+""+d)) < 14 || b >= d) {
+								 a = parseInt(Math.random()*9)+1;
+								 b = parseInt(Math.random()*9);
+								 c = parseInt(Math.random()*9)+1;
+								 d = parseInt(Math.random()*9);
+							}
+					}
+
+
+					first_shi.innerHTML = a;
+					first_ge.innerHTML = b;
+					second_shi.innerHTML = c;
+					second_ge.innerHTML = d;
+
+
+					h_first_shi.innerHTML = a;
+					h_first_ge.innerHTML = b;
+					h_sign.innerHTML = sign.innerHTML;
+					h_second_shi.innerHTML = c;
+					h_second_ge.innerHTML = d;
+					eq.innerHTML = "=";
+				}
+
+			}
+	</script>
+
+	<div id="out">
+	</div>
+
+	<div id="vertical" style="display:none">
+		<div  class="question">
+			<div class="row">
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+			</div>
+			<div class="row v">
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block">7</div>
+				<div class="block"></div>
+				<div class="block">6</div>
+				<div class="block"></div>
+			</div>
+			<div class="row v">
+				<div class="block"></div>
+				<div class="block">+</div>
+				<div class="block"></div>
+				<div class="block">4</div>
+				<div class="block"></div>
+				<div class="block">6</div>
+				<div class="block"></div>
+			</div>
+			<div class="separate-line v"></div>
+			<div class="row" v>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+				<div class="block"></div>
+			</div>
+		</div>
+	</div>
+</body>
+<script src=""></script>
 </html>
