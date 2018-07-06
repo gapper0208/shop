@@ -69,27 +69,27 @@
 					sign.innerHTML = signFlag ? "+" : "-";
 
 					var a = parseInt(Math.random()*9)+1;
-					var b = parseInt(Math.random()*9);
+					var b = parseInt(Math.random()*10);
 					var c = parseInt(Math.random()*9)+1;
-					var d = parseInt(Math.random()*9);
+					var d = parseInt(Math.random()*10);
 
 
 					
 					if(signFlag) {
 						while(Math.abs(+(a+""+b) -　+(c+""+d)) < 20 || b+d < 10 || +(a+""+b) +　+(c+""+d) > 100 ) {
 							 a = parseInt(Math.random()*9)+1;
-							 b = parseInt(Math.random()*9);
+							 b = parseInt(Math.random()*10);
 							 c = parseInt(Math.random()*9)+1;
-							 d = parseInt(Math.random()*9);
+							 d = parseInt(Math.random()*10);
 						}					
 					}
 
 					if(!signFlag) {
 							while(+(a+""+b) <　+(c+""+d) || Math.abs(+(a+""+b) -　+(c+""+d)) < 14 || b >= d) {
 								 a = parseInt(Math.random()*9)+1;
-								 b = parseInt(Math.random()*9);
+								 b = parseInt(Math.random()*10);
 								 c = parseInt(Math.random()*9)+1;
-								 d = parseInt(Math.random()*9);
+								 d = parseInt(Math.random()*10);
 							}
 					}
 
