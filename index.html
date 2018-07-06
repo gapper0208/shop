@@ -13,8 +13,11 @@
 		margin:3px;
 		letter-spacing:0px;
 	}	
-	#footer {
+	#refresh, #showAnswer {
 		cursor:pointer;
+	}
+	.hid {
+		display:none;
 	}
 </style>
 </head>
@@ -69,7 +72,15 @@
 
 			}
 
-			return exp = num(a,b) + sign + num(c,d) + "=";
+			var result =  $("<span class='result'></span>");
+			result.addClass("hid");
+			
+			result.html(eval(num(a,b) + sign + num(c,d)));
+
+			var exp = $("<span></span>").html(num(a,b) + sign + num(c,d) + "=");
+
+
+			return $("<div class='question'>").append(exp).append(result);
 
 		}
 
@@ -80,8 +91,7 @@
 			
 			for(i = 1; i <= 51; i++) {
 				var exp = generateQuestion();
-				
-				$("<div class='question'>").append(exp).appendTo($("#content"));
+				exp.appendTo($("#content"));
 			}
 			
 		}
@@ -92,8 +102,30 @@
 		
 		
 
-		$("#footer").click(function() {
+		$("#refresh").click(function() {
 			init()
+		});
+
+		$("#showAnswer").click(function() {
+
+			var flag = true;
+			$(".result").each(function(a,b) {
+				
+				if($(b).hasClass("hid")) {
+					$(b).removeClass("hid");
+					flag = false;
+				} else {
+					$(b).addClass("hid");
+					flag = true;
+				}
+			});
+			
+			if(flag) {
+				$("#showAnswer").html("显示答案");
+			} else {
+				$("#showAnswer").html("隐藏答案");
+			}
+			
 		});
 
 		init();
@@ -108,8 +140,9 @@
   <div id="content" data-role="content">
   </div>
 
-  <div id="footer" data-role="footer">
-    <h1>点点^_^</h1>
+  <div  data-role="footer">
+    <h1 id="refresh">点我刷新题哦^_^</h1>
+    <h1 id="showAnswer">显示答案</h1>
   </div>
 </div>
 
