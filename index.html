@@ -1,160 +1,117 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-	<meta charset="UTF-8">
-	<title>小星辰</title>
-	<style>
-		#out {
-			width: 800px;
-			margin: auto;
-		}
-
-		.question {
-			width:150px;
-			height:100px;
-			float:left;
-			margin:20px;
-		}
-
-		.v {
-			display: none;
-		}
-
-		.row {
-			margin-bottom:10px;	
-			height:20px;
-			width:100%;
-		}
-
-		.block {
-			float:left;
-			width:14%;
-			height:20px;
-			text-align: center;
-		}
-
-		.separate-line{
-			width:100%;
-			border-top: #000 solid 1px;
-		}
-
-	</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+	.question {
+		float:left;
+		width:100px;
+		height:20px;
+		margin:3px;
+		letter-spacing:0px;
+	}	
+	#footer {
+		cursor:pointer;
+	}
+</style>
 </head>
 <body>
+<script>
+	$(function() {
+		var signFlag = false;
 
-	<script type="text/javascript">
-			window.onload = function(){
-				var out = document.getElementById("out");
-				var v = document.getElementById("vertical");
-				var signFlag = false;
-				for(i = 0; i < 28; i++) {
-					var question = document.createElement("div");
-					question.innerHTML = v.innerHTML;
-					out.appendChild(question);
-					document.body.appendChild(out);
-					var h_first_shi = question.children[0].children[0].children[1];
-					var h_first_ge = question.children[0].children[0].children[2];
-					var h_sign = question.children[0].children[0].children[3];
-					var h_second_shi = question.children[0].children[0].children[4];
-					var h_second_ge = question.children[0].children[0].children[5];
-					var eq = question.children[0].children[0].children[6];
+		function generateQuestion() {		
 
-					var first_shi = question.children[0].children[1].children[3];
-					var first_ge = question.children[0].children[1].children[5];
-					var sign = question.children[0].children[2].children[1];
-					var second_shi = question.children[0].children[2].children[3];
-					var second_ge = question.children[0].children[2].children[5];
+			signFlag = !signFlag;
 
-					var signFlag = !signFlag;
-					sign.innerHTML = signFlag ? "+" : "-";
-
-					var a = parseInt(Math.random()*9)+1;
-					var b = parseInt(Math.random()*10);
-					var c = parseInt(Math.random()*9)+1;
-					var d = parseInt(Math.random()*10);
+			sign = signFlag ? "+" : "-";
 
 
-					
-					if(signFlag) {
-						while(Math.abs(+(a+""+b) -　+(c+""+d)) < 20 || b+d < 10 || +(a+""+b) +　+(c+""+d) > 100 ) {
-							 a = parseInt(Math.random()*9)+1;
-							 b = parseInt(Math.random()*10);
-							 c = parseInt(Math.random()*9)+1;
-							 d = parseInt(Math.random()*10);
-						}					
-					}
+			var a = parseInt(Math.random()*9)+1;
 
-					if(!signFlag) {
-							while(+(a+""+b) <　+(c+""+d) || Math.abs(+(a+""+b) -　+(c+""+d)) < 14 || b >= d) {
-								 a = parseInt(Math.random()*9)+1;
-								 b = parseInt(Math.random()*10);
-								 c = parseInt(Math.random()*9)+1;
-								 d = parseInt(Math.random()*10);
-							}
-					}
+			var b = parseInt(Math.random()*10);
+
+			var c = parseInt(Math.random()*9)+1;
+
+			var d = parseInt(Math.random()*10);
 
 
-					first_shi.innerHTML = a;
-					first_ge.innerHTML = b;
-					second_shi.innerHTML = c;
-					second_ge.innerHTML = d;
 
+			if(signFlag) {
 
-					h_first_shi.innerHTML = a;
-					h_first_ge.innerHTML = b;
-					h_sign.innerHTML = sign.innerHTML;
-					h_second_shi.innerHTML = c;
-					h_second_ge.innerHTML = d;
-					eq.innerHTML = "=";
+				while(Math.abs(num(a,b) -　num(c,d)) < 20 || b+d < 10 || num(a,b) +　num(c,d) > 100 ) {
+
+					 a = parseInt(Math.random()*9)+1;
+					 b = parseInt(Math.random()*10);
+
+					 c = parseInt(Math.random()*9)+1;
+
+					 d = parseInt(Math.random()*10);
+
+				}
+			}
+			if(!signFlag) {
+
+				while(num(a,b) <　num(c,d) || Math.abs(num(a,b) -　num(c,d)) < 14 || b >= d) {
+
+					 a = parseInt(Math.random()*9)+1;
+
+					 b = parseInt(Math.random()*10);
+
+					 c = parseInt(Math.random()*9)+1;
+
+					 d = parseInt(Math.random()*10);
+
 				}
 
 			}
-	</script>
 
-	<div id="out">
-	</div>
+			return exp = num(a,b) + sign + num(c,d) + "=";
 
-	<div id="vertical" style="display:none">
-		<div  class="question">
-			<div class="row">
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-			</div>
-			<div class="row v">
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block">7</div>
-				<div class="block"></div>
-				<div class="block">6</div>
-				<div class="block"></div>
-			</div>
-			<div class="row v">
-				<div class="block"></div>
-				<div class="block">+</div>
-				<div class="block"></div>
-				<div class="block">4</div>
-				<div class="block"></div>
-				<div class="block">6</div>
-				<div class="block"></div>
-			</div>
-			<div class="separate-line v"></div>
-			<div class="row" v>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-				<div class="block"></div>
-			</div>
-		</div>
-	</div>
+		}
+
+
+		function init() {
+
+			$("#content").empty();
+			
+			for(i = 1; i <= 27; i++) {
+				var exp = generateQuestion();
+				
+				$("<div class='question'>").append(exp).appendTo($("#content"));
+			}
+			
+		}
+
+		function num(x,y) {
+			return x*10+y;
+		}
+		
+		
+
+		$("#footer").click(function() {
+			init()
+		});
+
+		init();
+	});	
+</script>
+
+<div data-role="page" id="pageone">
+  <div data-role="header">
+    <h1>小星辰O(∩_∩)O</h1>
+  </div>
+
+  <div id="content" data-role="content">
+  </div>
+
+  <div id="footer" data-role="footer">
+    <h1>点点^_^</h1>
+  </div>
+</div>
+
 </body>
-<script src=""></script>
 </html>
