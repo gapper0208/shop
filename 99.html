@@ -32,7 +32,7 @@
 			var i, j;
 			for(i = 1; i <= 9; i++) {
 				for(j = 1; j <= i; j++) {
-					$("#content").append(j+"×"+i + "=" +  j*i + "&nbsp;&nbsp;&nbsp;&nbsp;");
+					$("#content").append("<span style='font-size:12px;'>" + j+"×"+i + "=" +  j*i + "&nbsp;&nbsp;</span>");
 				}
 				$("#content").append("<br /><br />");	
 			}
