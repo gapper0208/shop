@@ -117,7 +117,7 @@
 			var i;
 			var flag = true;
 			for(i = 1; i <= 9; i++) {
-				for(j = 1; j <= 9; j++) {
+				for(j = 1; j <= i; j++) {
 					var r = i * j;
 					expressions.push(r + "÷" + i + "=" + "(<span class='result'>"+j+"</span>)");
 				}
@@ -144,7 +144,7 @@
 			var i;
 			var flag = true;
 			for(i = 3; i <= 9; i++) {
-				for(j = 1; j <= 9; j++) {
+				for(j = 1; j <= i; j++) {
 					var r = i * j;
 					var mod = parseInt(Math.random() * i);
 					r += mod;
