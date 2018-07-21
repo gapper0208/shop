@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>title star</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
+<script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+	.expression {
+		float: left;
+		margin:12px;
+		width: 120px;
+	}
+	.result {
+		visibility: hidden;
+		color: orange;
+		font-size: 20px;
+		font-weight: bold;
+	}
+</style>
+</head>
+<body>
+<script>
+	$(function() {
+
+		function clearContent() {
+			$("#content").empty();
+		}
+
+		function print99() {
+			var i, j;
+			for(i = 1; i <= 9; i++) {
+				for(j = 1; j <= i; j++) {
+					$("#content").append(j+"*"+i + "=" +  j*i + "&nbsp;&nbsp;&nbsp;&nbsp;");
+				}
+				$("#content").append("<br /><br />");	
+			}
+
+
+		}
+
+		function randomExpression(){
+
+			$("#header").html("<h2 align='center'>乘法口算</h2>");
+
+			var expressions = [];
+			var i, j;
+			for(i = 1; i <= 9; i++) {
+				for(j = 1; j <= i; j++) {
+					expressions.push(j+"*"+i + "=" + "<span class='result'>" + i*j + "</span>");
+				}
+			}
+			for(i = 1; i <= expressions.length; i++) {
+				var a = parseInt(Math.random() * expressions.length);
+				var b = parseInt(Math.random() * expressions.length);
+				var t = expressions[a];
+				expressions[a] = expressions[b];
+				expressions[b] = t;
+			}
+			for(p in expressions) {
+				var expression = $("<div class='expression'>").append(expressions[p]);
+				$("#content").append(expression);
+			}
+		}
+
+
+		function randomExpressionWithCompare(){
+
+			$("#header").html("<h2 align='center'>>填最小， <填最大</h2>");
+
+			var expressions = [];
+			var i;
+			var flag = true;
+			for(i = 1; i <= 45; i++) {
+					var sign;
+
+					flag = !flag;
+					sign = flag ? "<" : ">";
+
+					var a = parseInt(Math.random() * 8 + 2);
+					var b = parseInt(Math.random() * 8 + 2);
+
+					var r = a*b;
+
+					if(sign == ">") {
+						r -= parseInt(Math.random() * a + 1);
+					}
+					if(sign == "<") {
+						r += parseInt(Math.random() * a + 1);
+					}
+
+					expressions.push(a + "*" + "(<span class='result'>"+b+"</span>)" + sign + r);
+					
+			}
+
+			for(i = 1; i <= expressions.length; i++) {
+				var a = parseInt(Math.random() * expressions.length);
+				var b = parseInt(Math.random() * expressions.length);
+				var t = expressions[a];
+				expressions[a] = expressions[b];
+				expressions[b] = t;
+			}
+			for(p in expressions) {
+				var expression = $("<div class='expression'>").append(expressions[p]);
+				$("#content").append(expression);
+			}
+		}
+
+		function randomDivideExpression(){
+			$("#header").html("<h2 align='center'>除法口算</h2>");
+
+			var expressions = [];
+			var i;
+			var flag = true;
+			for(i = 1; i <= 9; i++) {
+				for(j = 1; j <= 9; j++) {
+					var r = i * j;
+					expressions.push(r + "÷" + i + "=" + "(<span class='result'>"+j+"</span>)");
+				}
+			}
+
+			for(i = 1; i <= expressions.length; i++) {
+				var a = parseInt(Math.random() * expressions.length);
+				var b = parseInt(Math.random() * expressions.length);
+				var t = expressions[a];
+				expressions[a] = expressions[b];
+				expressions[b] = t;
+			}
+			for(p in expressions) {
+				var expression = $("<div class='expression'>").append(expressions[p]);
+				$("#content").append(expression);
+			}
+		}
+
+
+		function randomDivideExpressionWithremainder() {
+			$("#header").html("<h2 align='center'>除法求余数</h2>");
+
+			var expressions = [];
+			var i;
+			var flag = true;
+			for(i = 3; i <= 9; i++) {
+				for(j = 1; j <= 9; j++) {
+					var r = i * j;
+					var mod = parseInt(Math.random() * i);
+					r += mod;
+					expressions.push(r + "÷" + i + "=" + "(<span class='result'>"+j+"</span>)..." + "(<span class='result'>"+mod+"</span>)");
+				}
+			}
+
+			for(i = 1; i <= expressions.length; i++) {
+				var a = parseInt(Math.random() * expressions.length);
+				var b = parseInt(Math.random() * expressions.length);
+				var t = expressions[a];
+				expressions[a] = expressions[b];
+				expressions[b] = t;
+			}
+			for(p in expressions) {
+				var expression = $("<div class='expression'>").append(expressions[p]);
+				$("#content").append(expression);
+			}
+		}
+
+
+		function practiceLevelOne() {
+			answer = true;
+			clearContent();
+			print99();
+		}
+
+		function practiceLevelTwo() {
+			answer = true;
+			clearContent();
+			randomExpression();
+		}
+
+		function practiceLevelThree() {
+			answer = true;
+			clearContent();
+			randomExpressionWithCompare();
+		}
+
+		function practiceLevelFour() {
+			answer = true;
+			clearContent();
+			randomDivideExpression();
+		}
+
+		function practiceLevelFive() {
+			answer = true;
+			clearContent();
+			randomDivideExpressionWithremainder();
+		}
+
+		function init(){
+			practiceLevelOne();
+		}
+
+		init();
+
+		$("#btn1").click(function() {
+			practiceLevelOne();
+		});
+
+		$("#btn2").click(function() {
+			practiceLevelTwo();
+		});
+
+		$("#btn3").click(function() {
+			practiceLevelThree();
+		});
+
+		$("#btn4").click(function() {
+			practiceLevelFour();
+		});
+
+		$("#btn5").click(function() {
+			practiceLevelFive();
+		});
+
+		var answer = true;
+		$("#btn6").click(function() {
+			if(answer) {
+				$(".result").css("visibility","visible");
+				$(this).children(":eq(0)").html("隐藏答案");
+			} else {
+				$(".result").css("visibility","hidden");
+				$(this).children(":eq(0)").html("显示答案");
+			}
+			answer = !answer;
+		});
+	});	
+</script>
+
+<div data-role="page" id="pageone">
+  <div id="header" data-role="header">
+   <h1>小星辰，让孩子爱上学习！</h1>
+  </div>
+
+  <div id="content" data-role="content">
+  </div>
+
+  <div  data-role="footer">
+    <button id="btn1"><h3>99乘法表</h3></button>
+    <button id="btn2"><h3>口算乘法(点击刷新)</h3></button>
+    <button id="btn3"><h3>乘法提升(点击刷新)</h3></button>
+    <button id="btn4"><h3>口算除法(点击刷新)</h3></button>
+    <button id="btn5"><h3>除法求余(点击刷新)</h3></button>
+
+	<button id="btn6"><h3>显示答案</h3></button>
+
+  </div>
+</div>
+
+</body>
+</html>
