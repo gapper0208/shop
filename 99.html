@@ -32,7 +32,7 @@
 			var i, j;
 			for(i = 1; i <= 9; i++) {
 				for(j = 1; j <= i; j++) {
-					$("#content").append(j+"*"+i + "=" +  j*i + "&nbsp;&nbsp;&nbsp;&nbsp;");
+					$("#content").append(j+"×"+i + "=" +  j*i + "&nbsp;&nbsp;&nbsp;&nbsp;");
 				}
 				$("#content").append("<br /><br />");	
 			}
@@ -48,7 +48,7 @@
 			var i, j;
 			for(i = 1; i <= 9; i++) {
 				for(j = 1; j <= i; j++) {
-					expressions.push(j+"*"+i + "=" + "<span class='result'>" + i*j + "</span>");
+					expressions.push(j+"×"+i + "=" + "<span class='result'>" + i*j + "</span>");
 				}
 			}
 			for(i = 1; i <= expressions.length; i++) {
@@ -90,7 +90,7 @@
 						r += parseInt(Math.random() * a + 1);
 					}
 
-					expressions.push(a + "*" + "(<span class='result'>"+b+"</span>)" + sign + r);
+					expressions.push(a + "×" + "(<span class='result'>"+b+"</span>)" + sign + r);
 					
 			}
 
