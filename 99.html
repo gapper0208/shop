@@ -2,7 +2,8 @@
 <html>
 <head>
 <title>title star</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta charset="utf-8" />
 <link rel="stylesheet" href="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.css">
 <script src="https://apps.bdimg.com/libs/jquery/1.10.2/jquery.min.js"></script>
 <script src="https://apps.bdimg.com/libs/jquerymobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
@@ -165,6 +166,57 @@
 			}
 		}
 
+		function random4digitsExpression() {
+			$("#header").html("<h2 align='center'>4位以内数运算</h2>");
+
+			var expressions = [];
+			var i;
+			var flag = true;
+			for(i = 1; i <= 20; i++) {
+				var a;
+				do {
+					a = parseInt(Math.random() * 5001);
+				} while (a < 10);
+
+				var b;
+				do {
+					b = parseInt(Math.random() * 5001);
+				} while (b < 10);
+
+
+
+				var r;
+				if(i % 2 == 1) {
+					r = a + b;
+					expressions.push(a + "+" + b + "=" + "(<span class='result'>"+r+"</span>)");
+				} else {
+
+					if(a < b) {
+						var t = a;
+						a = b;
+						b = t;
+					}
+
+					r = a - b;
+					expressions.push(a + "-" + b + "=" + "(<span class='result'>"+r+"</span>)");
+				}
+				
+
+			}
+
+			for(i = 1; i <= expressions.length; i++) {
+				var a = parseInt(Math.random() * expressions.length);
+				var b = parseInt(Math.random() * expressions.length);
+				var t = expressions[a];
+				expressions[a] = expressions[b];
+				expressions[b] = t;
+			}
+			for(p in expressions) {
+				var expression = $("<div class='expression'>").append(expressions[p]);
+				$("#content").append(expression);
+			}
+		}
+
 
 		function practiceLevelOne() {
 			answer = true;
@@ -196,6 +248,12 @@
 			randomDivideExpressionWithremainder();
 		}
 
+		function practiceLevelSix() {
+			answer = true;
+			clearContent();
+			random4digitsExpression();
+		}
+
 		function init(){
 			practiceLevelOne();
 		}
@@ -222,8 +280,13 @@
 			practiceLevelFive();
 		});
 
-		var answer = true;
 		$("#btn6").click(function() {
+			practiceLevelSix();
+
+		});
+
+		var answer = true;
+		$("#btn7").click(function() {
 			if(answer) {
 				$(".result").css("visibility","visible");
 				$(this).children(":eq(0)").html("隐藏答案");
@@ -241,15 +304,14 @@
    <h1>小星辰，让孩子爱上学习！</h1>
   </div>
 
-
   <div id="footer" data-role="footer">
     <button id="btn1"><h3>99乘法表</h3></button>
     <button id="btn2"><h3>口算乘法(点击刷新)</h3></button>
     <button id="btn3"><h3>乘法提升(点击刷新)</h3></button>
     <button id="btn4"><h3>口算除法(点击刷新)</h3></button>
     <button id="btn5"><h3>除法求余(点击刷新)</h3></button>
-
-	<button id="btn6"><h3>显示答案</h3></button>
+    <button id="btn6"><h3>4位运算(点击刷新)</h3></button>
+	<button id="btn7"><h3>显示答案</h3></button>
 
   </div>
 
