@@ -227,7 +227,7 @@
 				var r;
 				if(i % 3 == 1) {
 					r = a + b;
-					expressions.push(a + "+" + b + "=" + "(<span class='result'>"+r+"</span>)");
+					expressions.push(a + "+" + b + "=" + "<span class='result'>"+r+"</span>");
 				} else {
 					if(a < b) {
 						var t = a;
@@ -235,7 +235,7 @@
 						b = t;
 					}
 					r = a - b;
-					expressions.push(a + "-" + b + "=" + "(<span class='result'>"+r+"</span>)");
+					expressions.push(a + "-" + b + "=" + "<span class='result'>"+r+"</span>");
 				}
 
 			}
