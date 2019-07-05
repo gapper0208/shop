@@ -11,7 +11,7 @@
 	.expression {
 		float: left;
 		margin:5px;
-		width: 105px;
+		width: 160px;
 	}
 	.result {
 		visibility: hidden;
@@ -166,12 +166,12 @@
 			}
 		}
 
-		function random4digitsExpression() {
+		function multipleExpression() {
 			$("#header").html("<h2 align='center'>4位以内数运算</h2>");
-
 			var expressions = [];
 			var i;
 			var flag = true;
+			// 20道4位数，3位数运算题
 			for(i = 1; i <= 20; i++) {
 				var a,b;
 				// 简单4位数运算
@@ -240,13 +240,27 @@
 
 			}
 
+			// 10道求余
+			for(k = 1; k <= 10; k++) {
+				var i = parseInt(Math.random() * 5) + 5;
+				var j = parseInt(Math.random() * 5) + 5;
+				var r = i * j;
+				var mod = parseInt(Math.random() * i);
+				r += mod;
+				expressions.push(r + "÷" + i + "=" + "(<span class='result'>"+j+"</span>).." + "(<span class='result'>"+mod+"</span>)");
+			}
+
+			// 10道时间换算
+			
+
+			/*
 			for(i = 1; i <= expressions.length; i++) {
 				var a = parseInt(Math.random() * expressions.length);
 				var b = parseInt(Math.random() * expressions.length);
 				var t = expressions[a];
 				expressions[a] = expressions[b];
 				expressions[b] = t;
-			}
+			}*/
 			for(p in expressions) {
 				var expression = $("<div class='expression'>").append(expressions[p]);
 				$("#content").append(expression);
@@ -287,7 +301,7 @@
 		function practiceLevelSix() {
 			answer = true;
 			clearContent();
-			random4digitsExpression();
+			multipleExpression();
 		}
 
 		function init(){
