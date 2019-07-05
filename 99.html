@@ -245,13 +245,18 @@
 				var i = parseInt(Math.random() * 5) + 5;
 				var j = parseInt(Math.random() * 5) + 5;
 				var r = i * j;
-				var mod = parseInt(Math.random() * i);
-				r += mod;
-				expressions.push(r + "÷" + i + "=" + "(<span class='result'>"+j+"</span>).." + "(<span class='result'>"+mod+"</span>)");
+				var mod;
+				do {
+					mod = parseInt(Math.random() * i);
+					r += mod;
+				} while(parseInt(r / i) == r / i);
+
+				
+				expressions.push(r + "÷" + i + "=" + "<span class='result'>"+j+"</span>" + "　　<span class='result'>"+mod+"</span>");
 			}
 
 			// 10道时间换算
-			
+
 
 			/*
 			for(i = 1; i <= expressions.length; i++) {
