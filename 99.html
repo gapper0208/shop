@@ -173,20 +173,28 @@
 			var i;
 			var flag = true;
 			for(i = 1; i <= 20; i++) {
-				var a;
-				do {
-					a = parseInt(Math.random() * 5001);
-				} while (a < 10);
-
-				var b;
-				do {
-					b = parseInt(Math.random() * 5001);
-				} while (b < 10);
-
-
+				var a,b;
+				// 简单4位数运算
+				if(i % 2 == 1) {
+					do {
+						a = parseInt(Math.random() * 51);
+					} while (a < 10);
+					do {
+						b = parseInt(Math.random() * 51);
+					} while (b < 10);
+					a*=100;
+					b*=100;
+				} else {
+					do {
+						a = parseInt(Math.random() * 1001);
+					} while (a < 10);
+					do {
+						b = parseInt(Math.random() * 1001);
+					} while (b < 10);
+				}
 
 				var r;
-				if(i % 2 == 1) {
+				if(i % 3 == 1) {
 					r = a + b;
 					expressions.push(a + "+" + b + "=" + "(<span class='result'>"+r+"</span>)");
 				} else {
@@ -200,7 +208,6 @@
 					r = a - b;
 					expressions.push(a + "-" + b + "=" + "(<span class='result'>"+r+"</span>)");
 				}
-				
 
 			}
 
