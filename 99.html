@@ -185,12 +185,43 @@
 					a*=100;
 					b*=100;
 				} else {
+					
+					var a1,a2,a3,t;
+					a1 = parseInt(Math.random() * 10);
+					a2 = parseInt(Math.random() * 10);
+					a3 = parseInt(Math.random() * 10);
+
+					var b1,b2,b3;
 					do {
-						a = parseInt(Math.random() * 1001);
-					} while (a < 10);
+						b1 = parseInt(Math.random() * 10);
+					} while(b1 == a1);
 					do {
-						b = parseInt(Math.random() * 1001);
-					} while (b < 10);
+						b2 = parseInt(Math.random() * 10);
+					} while(b2 == a2);
+					do {
+						b3 = parseInt(Math.random() * 10);
+					} while(b3 == a3);
+
+
+
+					if(b1 > a1) {
+						t = a1;
+						a1 = b1;
+						b1 = t;
+					}
+					if(a2 > b2) {
+						t = a2;
+						a2 = b2;
+						b2 = t;
+					}
+					if(a3 > b3) {
+						t = a3;
+						a3 = b3;
+						b3 = t;
+					}
+
+					a = +(a1 + "" + a2 + a3);
+					b = +(b1 + "" + b2 + b3);
 				}
 
 				var r;
@@ -198,13 +229,11 @@
 					r = a + b;
 					expressions.push(a + "+" + b + "=" + "(<span class='result'>"+r+"</span>)");
 				} else {
-
 					if(a < b) {
 						var t = a;
 						a = b;
 						b = t;
 					}
-
 					r = a - b;
 					expressions.push(a + "-" + b + "=" + "(<span class='result'>"+r+"</span>)");
 				}
