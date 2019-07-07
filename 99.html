@@ -255,7 +255,7 @@
 			}
 
 			// 10道求余
-			for(k = 1; k <= 10; k++) {
+			for(k = 1; k <= 15; k++) {
 				var i = parseInt(Math.random() * 5) + 5;
 				var j = parseInt(Math.random() * 5) + 5;
 				var r = i * j;
@@ -371,9 +371,6 @@
 
 			// 清空表达式数组，准备存入第二题
 			expressions.length = 0;
-			for(k = 1; k<= 22; k++) {
-				$("#content").append("&nbsp;　　　<br />");
-			}
 			$("#content").append($("<div style='clear:both;'>").html("二、列竖式计算，带*的要进行验算。"));
 			for(k = 1; k <= 6; k++) {
 				if(k <= 4) {
