@@ -12,6 +12,7 @@
 		float: left;
 		margin:5px;
 		width: 180px;
+		height: 40px;
 	}
 	.result {
 		visibility: hidden;
@@ -171,7 +172,7 @@
 			var expressions = [];
 
 
-			$("#content").append($("<div>").html("一、直接写出结果"));
+			$("#content").append($("<div>").html("一、直接写出结果。"));
 
 
 			var i;
@@ -370,7 +371,7 @@
 
 			// 清空表达式数组，准备存入第二题
 			expressions.length = 0;
-			$("#content").append($("<div style='clear:both'>").html("二、列竖式计算，带*的要进行验算"));
+			$("#content").append($("<div style='clear:both'>").html("二、列竖式计算，带*的要进行验算。"));
 			for(k = 1; k <= 6; k++) {
 				if(k <= 4) {
 					var a1,a2,a3,t;
