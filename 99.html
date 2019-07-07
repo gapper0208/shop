@@ -369,6 +369,9 @@
 				$("#content").append(expression);
 			}
 
+			// 加入强制分页的样式
+			$("#content").append($('<div style="page-break-after: always;"></div>'));
+
 			// 清空表达式数组，准备存入第二题
 			expressions.length = 0;
 			$("#content").append($("<div style='clear:both;'>").html("二、列竖式计算，带*的要进行验算。"));
