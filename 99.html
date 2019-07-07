@@ -169,6 +169,11 @@
 		function multipleExpression() {
 			$("#header").html("<h2 align='center'>4位以内数运算</h2>");
 			var expressions = [];
+
+
+			$("#content").append($("<div>").html("一、直接写出结果"));
+
+
 			var i;
 			var flag = true;
 			// 20道4位数，3位数运算题
@@ -258,8 +263,6 @@
 					mod = parseInt(Math.random() * i);
 					r += mod;
 				} while(parseInt(r / i) == r / i);
-
-				
 				expressions.push(r + "÷" + i + "=" + "<span class='result'>"+j+"</span>" + "　　<span class='result'>"+mod+"</span>");
 			}
 
@@ -364,6 +367,77 @@
 				var expression = $("<div class='expression'>").append(expressions[p]);
 				$("#content").append(expression);
 			}
+
+			// 清空表达式数组，准备存入第二题
+			expressions.length = 0;
+			$("#content").append($("<div style='clear:both'>").html("二、列竖式计算，带*的要进行验算"));
+			for(k = 1; k <= 6; k++) {
+				if(k <= 4) {
+					var a1,a2,a3,t;
+					a1 = parseInt(Math.random() * 10);
+					a2 = parseInt(Math.random() * 10);
+					a3 = parseInt(Math.random() * 10);
+
+					var b1,b2,b3;
+					do {
+						b1 = parseInt(Math.random() * 10);
+					} while(b1 == a1);
+					do {
+						b2 = parseInt(Math.random() * 10);
+					} while(b2 == a2);
+					do {
+						b3 = parseInt(Math.random() * 10);
+					} while(b3 == a3);
+
+
+					if(b1 > a1) {
+						t = a1;
+						a1 = b1;
+						b1 = t;
+					}
+					if(a2 > b2) {
+						t = a2;
+						a2 = b2;
+						b2 = t;
+					}
+					if(a3 > b3) {
+						t = a3;
+						a3 = b3;
+						b3 = t;
+					}
+
+					a = +(a1 + "" + a2 + a3);
+					b = +(b1 + "" + b2 + b3);
+
+					if(k <=2) {
+						r = a + b;
+						expressions.push("* " + a + "+" + b + "=" + "<span class='result'>"+r+"</span>");
+					} else {
+						if(a < b) {
+							t = a;
+							a = b;
+							b = t;
+						}
+						r = a - b;
+						expressions.push("* " + a + "-" + b + "=" + "<span class='result'>"+r+"</span>");
+					}
+				} else if(k <= 6) {
+					do {
+						a = parseInt(Math.random() * 32) + 50;
+						b = parseInt(Math.random() * 4) + 6;
+						r = parseInt(a / b);
+						r2 = a % b;
+					} while(r2 == 0)
+					
+					expressions.push("  " + a + "÷" + b + "=" + "<span class='result'>"+r+"</span>　　<span class='result'>"+r2+"</span>");
+				}
+			}
+
+			for(p in expressions) {
+				// 为第二题添加一些空白
+				var expression = $("<div class='expression' style='margin-bottom:100px;'>").append(expressions[p]);
+				$("#content").append(expression);
+			}
 		}
 
 
@@ -461,7 +535,6 @@
     <button id="btn5"><h3>除法求余(点击刷新)</h3></button>
     <button id="btn6"><h3>4位运算(点击刷新)</h3></button>
 	<button id="btn7"><h3>显示答案</h3></button>
-
   </div>
 
   <div id="content" data-role="content">
