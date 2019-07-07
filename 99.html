@@ -11,7 +11,7 @@
 	.expression {
 		float: left;
 		margin:5px;
-		width: 160px;
+		width: 180px;
 	}
 	.result {
 		visibility: hidden;
@@ -258,9 +258,6 @@
 			// 10道时间换算
 			for(k = 1; k <= 10; k++) {
 				var hour,min,sec;
-			
-				
-
 				var n = parseInt(Math.random() * 7) + 1;
 				switch(n) {
 					case 1: // 1 时-分
@@ -296,9 +293,56 @@
 					expressions.push(min*60+sec+"秒=(<span class='result'>"+min+"</span>)分(<span class='result'>"+sec+"</span>)秒");
 					break;
 				}
-
 			}
 
+
+			// 10道长度单位换算
+			for(k = 1; k <= 10; k++) {
+				var m,dm,cm,mm;
+				var n = parseInt(Math.random() * 7) + 1;
+				switch(n) {
+					case 1: // 1 米、分米---分米
+					m = parseInt(Math.random() * 10) + 1;
+					dm = parseInt(Math.random() * 9) + 1;
+					expressions.push(m+"米"+dm+"分米=(<span class='result'>"+(m*10+dm)+"</span>)分米");
+					break;
+					case 2: // 2 分米、厘米---厘米
+					dm = parseInt(Math.random() * 10) + 1;
+					cm = parseInt(Math.random() * 9) + 1;
+					expressions.push(dm+"分米"+cm+"厘米=(<span class='result'>"+(dm*10+cm)+"</span>)厘米");
+					break;
+					case 3: // 3 厘米、毫米---毫米
+					cm = parseInt(Math.random() * 10) + 1;
+					mm = parseInt(Math.random() * 9) + 1;
+					expressions.push(cm+"厘米"+mm+"毫米=(<span class='result'>"+(cm*10+mm)+"</span>)毫米");
+					break;
+					case 4: // 4 分米---米、分米
+					m = parseInt(Math.random() * 10) + 1;
+					dm = parseInt(Math.random() * 9) + 1;
+					expressions.push((m*10+dm)+"分米=(<span class='result'>"+m+"</span>)米(<span class='result'>"+dm+"</span>)分米");
+					break;
+					case 5: // 5 厘米---分米、厘米
+					dm = parseInt(Math.random() * 10) + 1;
+					cm = parseInt(Math.random() * 9) + 1;
+					expressions.push((dm*10+cm)+"厘米=(<span class='result'>"+dm+"</span>)分米(<span class='result'>"+cm+"</span>)厘米");
+					break;
+					case 6: // 6 毫米---厘米、毫米
+					cm = parseInt(Math.random() * 10) + 1;
+					mm = parseInt(Math.random() * 9) + 1;
+					expressions.push((cm*10+mm)+"毫米=(<span class='result'>"+cm+"</span>)厘米(<span class='result'>"+mm+"</span>)毫米");
+					break;
+					case 7: // 7 米、厘米---厘米
+					m = parseInt(Math.random() * 10) + 1;
+					cm = parseInt(Math.random() * 100);
+					expressions.push(m+"米"+cm+"厘米=(<span class='result'>"+(m*100+cm)+"</span>)厘米");
+					break;
+					case 8: // 8 分米、毫米---毫米
+					dm = parseInt(Math.random() * 10) + 1;
+					mm = parseInt(Math.random() * 100);
+					expressions.push(dm+"分米"+mm+"毫米=(<span class='result'>"+(dm*100+mm)+"</span>)毫米");
+					break;
+				}
+			}
 
 			/*
 			for(i = 1; i <= expressions.length; i++) {
