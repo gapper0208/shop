@@ -240,6 +240,14 @@
 
 			}
 
+			for(i = 1; i <= expressions.length; i++) {
+				var a = parseInt(Math.random() * expressions.length);
+				var b = parseInt(Math.random() * expressions.length);
+				var t = expressions[a];
+				expressions[a] = expressions[b];
+				expressions[b] = t;
+			}
+
 			// 10道求余
 			for(k = 1; k <= 10; k++) {
 				var i = parseInt(Math.random() * 5) + 5;
