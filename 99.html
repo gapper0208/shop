@@ -371,7 +371,10 @@
 
 			// 清空表达式数组，准备存入第二题
 			expressions.length = 0;
-			$("#content").append($("&nbsp;<br />&nbsp;<br />&nbsp;<br />&nbsp;<br /><div style='clear:both;'>").html("二、列竖式计算，带*的要进行验算。"));
+			for(k = 1; k<= 22; k++) {
+				$("#content").append("&nbsp;<br />");
+			}
+			$("#content").append($("<div style='clear:both;'>").html("二、列竖式计算，带*的要进行验算。"));
 			for(k = 1; k <= 6; k++) {
 				if(k <= 4) {
 					var a1,a2,a3,t;
