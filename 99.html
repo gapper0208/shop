@@ -256,6 +256,48 @@
 			}
 
 			// 10道时间换算
+			for(k = 1; k <= 10; k++) {
+				var hour,min,sec;
+			
+				
+
+				var n = parseInt(Math.random() * 7) + 1;
+				switch(n) {
+					case 1: // 1 时-分
+					hour = parseInt(Math.random() * 5) + 1;
+					expressions.push(hour + "时=(<span class='result'>"+hour*60+"</span>)分");
+					break;
+					case 2: // 2 秒-分
+					sec = (parseInt(Math.random() * 5) + 1) * 60;
+					expressions.push(sec + "秒=(<span class='result'>"+sec/60+"</span>)分");
+					break;
+					case 3: // 3 分-秒
+					min = (parseInt(Math.random() * 10) + 1);
+					expressions.push(min + "分=(<span class='result'>"+min*60+"</span>)秒");
+					break;
+					case 4: // 4 时分-分
+					hour = parseInt(Math.random() * 3) + 1;
+					min = (parseInt(Math.random() * 11) + 1) * 5;
+					expressions.push(hour+"时"+min+"分=(<span class='result'>"+(hour*60+min)+"</span>)分");
+					break;
+					case 5: // 5 分秒-秒
+					min = (parseInt(Math.random() * 10) + 1) ;
+					sec = (parseInt(Math.random() * 11) + 1) * 5;
+					expressions.push(min+"分"+sec+"秒=(<span class='result'>"+(min*60+sec)+"</span>)秒");
+					break;
+					case 6: // 6 分-时分
+					hour = parseInt(Math.random() * 3) + 1;
+					min = (parseInt(Math.random() * 11) + 1) * 5;
+					expressions.push(hour*60+min+"分=(<span class='result'>"+hour+"</span>)时(<span class='result'>"+min+"</span>)分");
+					break;
+					case 7: // 7 秒-分秒
+					min = parseInt(Math.random() * 3) + 1;
+					sec = (parseInt(Math.random() * 11) + 1) * 5;
+					expressions.push(min*60+sec+"秒=(<span class='result'>"+min+"</span>)分(<span class='result'>"+sec+"</span>)秒");
+					break;
+				}
+
+			}
 
 
 			/*
